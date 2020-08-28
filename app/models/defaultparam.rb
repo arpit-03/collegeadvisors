@@ -1,0 +1,2 @@
+class Defaultparam < ApplicationRecord
+end

@@ -1,0 +1,49 @@
+<div class="space-header"></div>
+<div class="bconfcover">
+	<div class="bconfdiv">
+		<div class="plan">
+		<h5>Plan Type: <%=@c.typeplan%></h5>
+		<p>Total Number of Sessions: <%=@c.numsession%></p>
+		<h6>Features Provided</h6>
+		<p><i class="fas fa-check"></i> <%=@c.line1%></p>
+		<p><i class="fas fa-check"></i> <%=@c.line2%></p>
+		<p><i class="fas fa-check"></i> <%=@c.line3%></p>
+		<p><i class="fas fa-check"></i> <%=@c.line4%></p>
+		</div>
+		<div class="tablediv">
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th> </th>
+						<th>Cost</th>
+					</tr>
+				</thead>
+<tbody>
+	<tr>
+		<td>Type Plan : <%=@c.typeplan%></td>
+<td></td>
+<td>₹ <%=@c.price%></td>
+	</tr>
+	<tr >
+		<td></td>
+		<td></td>
+		<td ></td>
+	</tr>
+	<tr >
+		<td></td>
+		<td></td>
+		<td ></td>
+	</tr>
+	<tr >
+		<td style="border-top-style: solid;border-top-width: 1px">Total:</td>
+		<td></td>
+		<td style="border-top-style: solid;border-top-width: 1px">₹ <%=@c.price%></td>
+	</tr>
+</tbody>
+			</table>
+			<div class="btncenter"><button class="btn btn-info" style="margin-top: 20px">Checkout and Pay Now</button>
+		</div>
+		</div>
+	</div>
+</div>

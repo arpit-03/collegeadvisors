@@ -1,0 +1,16 @@
+<div class="space-header"></div>
+<div style="padding: 100px;">
+<h5 style="text-align: center;">Super User Access</h5>
+<%=form_tag admin_path ,method: 'post' do %>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <%=text_field_tag :username,"",class:'form-control',type:"email"%><br>  
+      <small id="emailHelp" class="form-text text-muted">You will be logging in as a superuser at Collegeadvisors.in</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+<%=password_field_tag :password,"" ,class:'form-control',type:"password"%><br>
+  </div>
+ 
+  <%=submit_tag "LOGIN", class: 'btn btn-info'%>
+<%end%>

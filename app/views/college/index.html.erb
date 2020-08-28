@@ -1,0 +1,162 @@
+<div class="space-header"></div>
+<div>
+<div class="college-contain">
+	<div class="full-top-banner">
+	<div class="banner" style="background-image: url('<%=custom_image_path(@name.gsub('.',' ')+"-cover")%>')">
+
+</div>	
+<div class="banner-bottom">
+	<div class="college-icon">
+<%= image_tag custom_image_path(@name.gsub('.',' ')+"-icon")%>
+</div>
+<div class="information">
+<div>
+<p class="title"><%=@name%></p>
+  	<p class="location"><%=@location %></p>
+  	</div>
+  	<div>
+  	<p class="facts"><%=@facts%></p><br>
+</div>
+</div>
+</div>
+</div>
+<div class="infocollege">
+<div class="tablecover">
+	<h5>Information</h5>
+<table>
+	<%@facts_table.each do |f|%>
+	<tr>
+		<td><%=f[0]%></td>
+		<td><%=f[1]%></td>
+	</tr>
+	<%end%>
+</table>
+</div>
+<div class="facility_top">
+	<h5>Facilities</h5>
+	<div class="facility">
+  	<%@facility.each do |f|%>
+  	<div class="activity">
+  	<div class="activity_icon"><%=image_tag College.sendiconlink(f)%></div>
+  	<div class="activity_name"><%=f%></div>
+  	</div>
+  	<%end%>
+  </div>
+</div>
+</div>
+
+
+<div class="course-list" id="courselistshow">
+	<!--  -->
+	<div style="width: 24%; margin-right: 2%">
+		<div class="choosing_list1" style="position: inherit; width: 100%;">
+		<h5>Select</h5>
+		<div class="scrollist">
+			<form id="search-list-form">
+	<h5>By Degree</h5>
+	<input class="" type="radio" name="gridRadios1" value="all" >
+            <div class="list-p-item"><p>All</p><p><%=@count%></p></div>
+            <br>
+	<%@fields.each do |f|%>
+		
+          
+		
+          <input class="" type="radio" name="gridRadios1" value="<%=f[0]%>" >
+            <div class="list-p-item"><p><%=f[0]%></p><p><%=f[1]%></p></div>
+<br>
+ <%end%>
+</div>
+<br>
+<div class="alphasort">
+
+	<h5>By Name</h5>
+		
+          <input class="" type="radio" name="gridRadios2" value="ASC" >
+         
+           <p> Sort via name A-Z</p>
+         <br>
+          <input class="" type="radio" name="gridRadios2" value="DESC">
+           <p> Sort via name Z-A</p>
+          
+
+	</div>
+	<button class="btn btn-primary" id="apply" type="submit">Apply</button>
+	</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+	<div class="clist1">
+
+		<%i=0%>
+			<%@cname.each do |f|%>
+			<%if i%2==0%>
+			<div class="college-item" style="width:46%">
+		<h5><%=f.name%></h5>
+	<p><%=f.degree%></p>
+	<p><%=JSON.parse(f.facts)[0]%></p>
+	<%i=i+1%>
+</div>
+<%else%>
+	<div class="college-item" style="margin-right: 0 !important;width:46%">
+		<h5><%=f.name%></h5>
+	<p><%=f.degree%></p>
+	<p><%=JSON.parse(f.facts)[0]%></p>
+</div>
+<%i=i+1%>
+<%end%>
+	<%end%>
+
+	</div>
+	</div>
+</div>
+</div>
+
+<%= will_paginate(@cname, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer,class: 'pagination-sm',:params => {:anchor => "courselistshow"}) %>
+<div style="margin-bottom: 20px"></div>
+</div>
+<footer class="footer-area section-gap" >
+<div class="container">
+<div class="footer-bottom row align-items-center">
+<p class="footer-text m-0 col-lg-8 col-md-12">
+Copyright© 2020 All rights reserved | CollegeAdvisors <i class="fa fa-heart-o" aria-hidden="true"></i> 
+</p>
+<div class="col-lg-4 col-md-12 footer-social">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-dribbble"></i></a>
+<a href="#"><i class="fab fa-behance"></i></a>
+</div>
+</div>
+</div>
+</footer>
+<script type="text/javascript">
+var url_string = window.location.href; //window.location.href
+var url = new URL(url_string);
+console.log(url)
+var d = url.searchParams.get("degree");
+var c = url.searchParams.get("order");
+$("input[name=gridRadios1][value='"+d+"']").prop("checked",true);
+$("input[name=gridRadios2][value="+c+"]").prop("checked",true);
+
+	$('#apply').click(function(event){
+event.stopPropagation();
+event.preventDefault();
+let a= $("input[name='gridRadios1']:checked").val();
+let b= $("input[name='gridRadios2']:checked").val();
+if(!a)
+a="all";
+if(!b)
+b="ASC";
+window.location= "http://localhost:3000/college/index/<%=@current_college_id%>/1/?degree="+a+"&order="+b+"#courselistshow";
+	});
+</script>

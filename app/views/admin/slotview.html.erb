@@ -1,0 +1,13 @@
+<div class="space-header"></div>
+<div>
+	<p>Admin Id: <%=@slot.admin_id%></p>
+	<p>Slot Time and Date: <%=@slot.slot%></p>
+	<%if @slot.user_id%>
+	<p><%=@user.id %></p>
+	<p><%=@user.email%></p>
+	<p><%=@user.name%></p>
+	<p><%=@user.number%></p>
+	<%else%>
+	<p>Slot has not been booked</p>
+	<%end%>
+</div>

@@ -1,0 +1,119 @@
+<div class="space-header"></div>
+<div class="course-list">
+	<!--  -->
+	<div style="width: 20%">
+		<div class="choosing_list1" >
+		<h5>Select</h5>
+		<div class="scrollist">
+			<form id="search-list-form">
+	<h5>By Degree</h5>
+	<input class="" type="radio" name="gridRadios1" value="all" >
+            <div class="list-p-item"><p>All</p><p><%=@count%></p></div>
+            <br>
+	<%@degree1.each do |f|%>
+		
+          
+		
+          <input class="" type="radio" name="gridRadios1" value="<%=f[1].to_s%>" >
+            <div class="list-p-item"><p><%=f[1]%></p><p><%=f[0]%></p></div>
+<br>
+ <%end%>
+</div>
+<br>
+<div class="alphasort">
+
+	<h5>By Name</h5>
+		
+          <input class="" type="radio" name="gridRadios2" value="ASC" >
+         
+           <p> Sort via name A-Z</p>
+         <br>
+          <input class="" type="radio" name="gridRadios2" value="DESC">
+           <p> Sort via name Z-A</p>
+          
+
+	</div>
+	<button class="btn btn-primary" id="apply" type="submit">Apply</button>
+	</div>
+	</div>
+	
+	<div style="background-color: #f1f9ff;width: 80%;padding: 40px;">
+	<div class="clist1" >
+
+		<%i=0%>
+			<%@cname.each do |f|%>
+			
+			<%if i%2==0%>
+			<div class="search-list-item hvr-float-shadow">
+				<a href="/college/index/<%=f.id%>/1">
+					<div class="banner" style='background-image: url("<%=custom_image_path(f.name.gsub('.',' ')+"-cover")%>")'>
+
+				</div>
+	<%= image_tag custom_image_path(f.name.gsub('.',' ')+"-icon")%>
+	<div class="search-div1">
+<p class="name-search"><%=f.name%></p>
+	<p class="fact-search"><i class="fas fa-map-marker-alt" style="margin-right: 5px"></i><%=f.location%></p>
+	<p class="location-search"><%=f.facts%></p>
+</div>
+</a>
+</div>
+<%i=i+1%>
+<%else%>
+<div class="search-list-item hvr-float-shadow" style="margin-left: 4%">
+	<a href="/college/index/<%=f.id%>/1">
+					<div class="banner" style="background-image: url(<%=custom_image_path(f.name.gsub('.',' ')+"-cover")%>)">
+
+				</div>
+	<%= image_tag custom_image_path(f.name.gsub('.',' ')+"-icon")%>
+	<div class="search-div1">
+<p class="name-search"><%=f.name%></p>
+<p class="fact-search"><i class="fas fa-map-marker-alt" style="margin-right: 5px"></i><%=f.location%></p>
+	<p class="location-search"><%=f.facts%></p>
+</div>
+</a>
+</div>
+<%i=i+1%>
+<%end%>
+	<%end%>
+	
+</div>
+<%= will_paginate(@cname, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer,class: 'pagination-sm') %>
+	</div>
+	</div>
+	<footer class="footer-area section-gap" style="margin-left: 20%">
+<div class="container">
+<div class="footer-bottom row align-items-center">
+<p class="footer-text m-0 col-lg-8 col-md-12">
+Copyright© 2020 All rights reserved | CollegeAdvisors <i class="fa fa-heart-o" aria-hidden="true"></i> 
+</p>
+<div class="col-lg-4 col-md-12 footer-social">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-dribbble"></i></a>
+<a href="#"><i class="fab fa-behance"></i></a>
+</div>
+</div>
+</div>
+</footer>
+
+<script type="text/javascript">
+	
+var url_string = window.location.href; //window.location.href
+var url = new URL(url_string);
+console.log(url)
+var d = url.searchParams.get("degree");
+var c = url.searchParams.get("order");
+		$("input[name=gridRadios1][value='"+d+"']").prop("checked",true);
+$("input[name=gridRadios2][value='"+c+"']").prop("checked",true);
+		$('#search-list-form').submit(function(event){
+			event.preventDefault();
+			var a1= $("input[name='gridRadios1']:checked").val();
+var b= $("input[name='gridRadios2']:checked").val();
+if(a1===undefined)
+a1="all";
+if(b===undefined)
+b="normal";
+			window.location=backpath+"/searchall/<%=@query%>/?degree="+a1+"&order="+b;
+		});
+
+</script>

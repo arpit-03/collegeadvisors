@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  typeplan: MyString
+  price: 1
+  numsession: 1
+  line1: MyString
+  line2: MyString
+  line3: MyString
+  line4: 
+
+two:
+  typeplan: MyString
+  price: 1
+  numsession: 1
+  line1: MyString
+  line2: MyString
+  line3: MyString
+  line4: 

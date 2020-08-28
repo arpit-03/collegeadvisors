@@ -1,0 +1,124 @@
+<div class="space-header"></div>
+<section style="padding: 50px">
+	<h5 style="text-align: center;font-size: 35px">Our Services</h5>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan viverra enim et semper. Fusce dignissim, elit sit amet suscipit volutpat, lorem est pellentesque tortor, a elementum tellus magna ut turpis. Nulla facilisis nulla ut mi consectetur, in fringilla tortor auctor. Fusce eget sem tortor. In tempus rhoncus commodo. Fusce tincidunt laoreet erat nec ultrices. Nam ullamcorper tristique tempor. Curabitur elementum elit turpis, vitae eleifend eros rhoncus a. Proin convallis tellus vitae justo lacinia hendrerit eu vitae quam. In ut viverra arcu, nec malesuada lorem. Suspendisse non purus volutpat nunc sollicitudin elementum in eu nisl. Sed vitae malesuada orci. Sed tempor eu magna id ultricies.
+<br>
+Aenean scelerisque, nibh ac pretium rutrum, velit nisi faucibus magna, sed consectetur magna nisi vel purus. Fusce varius laoreet lacus, eu pulvinar ligula ultrices ut. Aenean iaculis id velit sed luctus. In hac habitasse platea dictumst. In vel tincidunt orci. Ut aliquet nec mi at pellentesque. Sed tristique ligula id sem lobortis imperdiet. Integer elementum magna ut leo interdum pretium. Etiam a tempus justo. Sed at condimentum dolor, ultrices fermentum purus. Aliquam consequat, est blandit viverra semper, ligula eros malesuada dui, vitae gravida dui purus non libero. Praesent ut lacinia augue. Morbi ac commodo elit. Nunc faucibus, metus vitae vehicula mattis, massa neque varius tortor, sit amet egestas tortor dui non dui. Quisque faucibus urna sit amet elit imperdiet, at bibendum velit congue. Sed tincidunt massa et dui faucibus molestie.</p>
+</section>
+<%if @sub %>
+<div class="bookslot">
+	<h5>Book a Slot</h5>
+	<div class="slothead">
+	<p>Number of Slots left: <%=@slots%></p>
+	<p>Subscription type: <%=@subtype%></p>
+</div>
+<div>
+	<%@dates.each do |f|%>
+	<div class="datehead"><p><%=f[0].strftime("%A")%> <%=f[0].strftime("%d-%m-%Y")%></p></div>
+	<%timenow=f[0].strftime("%Y-%m-%d %H:%M:%S ") %>
+	<%timenow=timenow[0..timenow.length-4]+"UTC"%>
+	<%@fullslots=Adminslot.where('DATE(slot)=?',timenow)%>
+	<%@fullslots.each do |fs|%>
+	<div class="btn btn-primary slotbookbtn" id="slot-<%=fs.id%>" data-toggle="modal" data-target="#exampleModal">
+	<%=fs.slot.strftime("%H:%M")%>
+</div>
+	<%end%>
+	
+	<%end%>
+</div>
+</div>
+<%else%>
+
+<section class="pricing py-5">
+	<h5 style="text-align: center;font-size: 35px">Consultation Pricing</h5><br>
+  <div class="container">
+    <div class="row">
+      <!-- Free Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center"><%=@c1.typeplan%></h5>
+            <h6 class="card-price text-center">₹<%=@c1.price%><span class="period">for <%=@c1.numsession%> session</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c1.line1%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c1.line2%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c1.line3%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c1.line4%></li>
+          
+            </ul>
+            <a href="#" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Plus Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+           <h5 class="card-title text-muted text-uppercase text-center"><%=@c1.typeplan%></h5>
+            <h6 class="card-price text-center">₹<%=@c2.price%><span class="period">for <%=@c2.numsession%> session</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c2.line1%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c2.line2%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c2.line3%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c2.line4%></li>
+          
+            </ul>
+            <a href="#" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+           <h5 class="card-title text-muted text-uppercase text-center"><%=@c3.typeplan%></h5>
+            <h6 class="card-price text-center">₹<%=@c3.price%><span class="period">for <%=@c3.numsession%> session</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c3.line1%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c3.line2%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c3.line3%></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c3.line4%></li>
+          
+            </ul>
+            <a href="#" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%end%>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to book the slot?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This will lead to deduction in you number of sessions.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary" id="yesmodal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$('.slotbookbtn').click(function(event){
+var id= $(this)[0].id;
+		$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus');
+});
+$('#yesmodal').click(function(e){
+	console.log(id);
+});
+	});
+
+</script>>

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin_id: 1
+  slot: 2020-08-25 14:24:35
+  booked: false
+  user_id: 1
+
+two:
+  admin_id: 1
+  slot: 2020-08-25 14:24:35
+  booked: false
+  user_id: 1

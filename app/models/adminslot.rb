@@ -1,0 +1,2 @@
+class Adminslot < ApplicationRecord
+end

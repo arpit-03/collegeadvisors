@@ -1,0 +1,39 @@
+<div class="space-header"></div>
+<div class="confirmations">
+	<p>Enter your email address , the email would be sent to your email.</p>
+	<form id="fpassconf">
+		<div class="form-group">
+    
+    <input type="email" class="form-control" id="exampleInputPassword1" name="email" placeholder="Enter Email">
+
+  </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+
+<script type="text/javascript">
+	$("#fpassconf").submit(function(event){
+		event.preventDefault();
+		let email= $("input[name=email]").val();
+
+		 $.ajax({
+
+        'url' : '/api/v1/confirmforgot',
+        'type' : 'POST',
+        'data' : {
+            'email': email
+        },
+        'success' : function(data) {    
+        if(data.msg=="success")          
+            window.location=backpath;
+        else
+            alert(data.msg)
+        },
+        'error' : function(request,error)
+        {
+            alert(request);
+        }
+    });
+	});
+</script>

@@ -1,0 +1,182 @@
+<div class="space-header"></div>
+<div class="container register">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome</h3>
+                        
+                        <input type="submit" name="" value="Login"/><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Signup as a user</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Name *" name="name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your college/school *" name="college" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" name="password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  placeholder="Mothers Name" name="mothername" />
+                                        </div>
+                                         <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Mother number" name="motherno" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="male" checked>
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" name="gender" value="female">
+                                                    <span>Female </span> 
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" name="email" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Your Phone *" name="phone" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" id="background">
+                                                <option class="hidden"  selected disabled>Background</option>
+                                                <option value="engineering">Engineering</option>
+                                                <option value="arts">Arts</option>
+                                                <option value="science">Science</option>
+                                                <option value="commerce">Commerce</option>
+                                                <option value="law">Law</option>
+                                                <option value="animation">Animation</option>
+                                                <option value="design">Design</option>
+                                                <option value="mascom">Mass Communication</option>
+                                                <option value="medical">Medical</option>
+                                                <option value="architecture">Architecture</option>
+                                                <option value="ospitality">Hospitality</option>
+                                                <option value="none">None</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Father's Name" name="fathername" />
+                                        </div>
+                                         <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Father's Number" name="fatherno" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <script type="text/javascript">
+    $('.btnRegister').click(function(event){
+        event.preventDefault();
+        let name= $("input[name=name]").val();
+        let email =$("input[name=email]").val();
+        let password =$("input[name=password]").val();
+        let college =$("input[name=college]").val();
+        let gender =$("input[name=gender]:checked").val();
+        let background =$("#background").val(); 
+        let mothername =$("input[name=mothername]").val();
+        let motherno =$("input[name=motherno]").val();
+        let fathername =$("input[name=fathername]").val();
+        let fatherno =$("input[name=fatherno]").val();
+        let phone =$("input[name=phone]").val();
+        if(name===""){
+            new Noty({
+    type: 'error',
+    layout: 'topRight',
+    text: 'Please enter Name',
+    timeout: 1000
+}).show();
+
+        }
+        else if (email===""){
+            new Noty({
+    type: 'error',
+    layout: 'topRight',
+    text: 'Please enter Email',
+      timeout: 1000
+}).show();
+        }
+        else if (password===""){
+new Noty({
+    type: 'error',
+    layout: 'topRight',
+    text: 'Please enter Password',
+      timeout: 1000
+}).show();
+        }
+        else if (background===null || background===""){
+new Noty({
+    type: 'error',
+    layout: 'topRight',
+    text: 'Please enter Background',
+      timeout: 1000
+}).show();
+        }
+        else if (phone===""){
+         new Noty({
+    type: 'error',
+    layout: 'topRight',
+    text: 'Please enter Mobile Number',
+      timeout: 1000
+}).show();   
+        }
+        else{
+         $.ajax({
+        
+ 
+
+        'url' : '/api/v1/signupuser',
+        'type' : 'POST',
+        'data' : {
+            
+            'name' :name,
+            'email': email,
+            'password': password,
+            'college': college,
+            'phone':phone,
+            'gender':gender,
+            'background':background,
+            'mothername':mothername,
+            'motherno':motherno,
+            'fathername':fathername,
+            'fatherno':fatherno
+
+        },
+        'success' : function(data) {    
+        if(data.msg=="success")          
+            window.location=backpath;
+        else
+            {
+                new Noty({
+    type: 'error',
+    layout: 'topRight',
+    text: 'Email already registered. Try another email',
+      timeout: 1000
+}).show();
+            }
+        },
+        'error' : function(request,error)
+        {
+            alert(request);
+        }
+    });}
+    });
+</script>
