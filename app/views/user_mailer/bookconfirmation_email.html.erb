@@ -1,0 +1,12 @@
+<p>Hi <%=@user.name%> ,</p><br>
+<p>Below are the details of your booked consultation slot.</p>
+<p>Day: <strong><%=@adminslot.slot.strftime("%A")%></strong></p>
+	<p>Time: <strong><%=@adminslot.slot.strftime("%H:%M")%></strong></p>
+	<p>Date: <strong><%=@adminslot.slot.strftime("%d-%m-%Y")%></strong></p>
+	<p>Duration: <%=Defaultparam.find(4).typeplan%></p>
+	<p><a href="<%=Defaultparam.find(5).line1%>">Click to open <%=Defaultparam.find(5).typeplan%> link</a></p>
+
+	<br>
+	<br>
+	<p>Greetings</p>
+	<p>Collegeadvisors</p>

@@ -1,0 +1,14 @@
+<div class="space-header"></div>
+<div style="padding: 50px">
+<%= form_for @c5,url: changelink_path ,method: 'post' do |f| %>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Type of Provider</label>
+<%=f.text_field :typeplan,class:'form-control',type:"text"%><br>
+  </div>
+<div class="form-group">
+    <label for="exampleInputPassword1">Link of Meeting</label>
+<%=f.text_field :line1,class:'form-control',type:"text"%><br>
+  </div>
+  <%=f.submit "Change Defaults", class: 'btn btn-info'%>
+<%end%>

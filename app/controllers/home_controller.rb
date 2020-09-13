@@ -1,11 +1,14 @@
 class HomeController < ApplicationController
+  before_action :authorize_user , except:[:index,:show,:search,:about]
   def index
+   
     @c1=Defaultparam.find(1)
     @c2=Defaultparam.find(2)
     @c3=Defaultparam.find(3)
   end
 
-
+def about
+end
     def show
 
     	@current_stream=params[:stream]
@@ -127,4 +130,39 @@ def bookconfirmation
   type=params[:plan]
   @c=Defaultparam.find(type)
 end
+
+def slotbooked
+if(Adminslot.find(params[:id]) && session[:user_id] && User.find(session[:user_id]) && User.find(session[:user_id]).slotsleft>0)
+Adminslot.find(params[:id]).update(booked: true,user_id: session[:user_id])
+if(User.find(session[:user_id]).slotsleft==1)
+User.find(session[:user_id]).update(subscription: false, subtype: nil, slotsleft: nil)
+else
+  User.find(session[:user_id]).update(slotsleft: User.find(session[:user_id]).slotsleft-1)
+ end
+ @slot={
+  slot_id: params[:id],
+  user_id: session[:user_id]
+ }
+  UserMailer.with(slot: @slot).bookconfirmation_email.deliver_later
+ redirect_to successbooked_path(params[:id])
+else
+  redirect_to error_path
+end
+end
+def slotsuccess
+if(Adminslot.find(params[:id]) && Adminslot.find(params[:id]).user_id==session[:user_id])
+@slotinfo=Adminslot.find(params[:id])
+else
+  redirect_to error_path
+end
+
+end
+def error
+  end
+
+  def authorize_user
+    if(!session[:user_id])
+      redirect_to root_path(type: "invaliduser")
+    end
+  end
 end

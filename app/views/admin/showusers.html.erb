@@ -1,0 +1,56 @@
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
+<div class="space-header"></div>
+
+<div style="padding: 50px">
+  <h5 style="text-align: center;font-size: 25px">User Information</h5>
+  <br>
+<table id="myTable2" class="table table-striped table-bordered">
+  
+   <thead>
+        <tr>
+           
+            <th>User Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>College/school</th>
+            <th>Background</th>
+            <th>Father's Name</th>
+            <th>Father's Number</th>
+            <th>Mother's Name</th>
+            <th>Mother's Number</th>
+       
+        </tr>
+    </thead>
+    <tbody>
+      <%@users.each do |f|%>
+      <tr>
+        
+           <td><%=f.id%></td>
+           <td><%=f.name%></td>
+           <td><%=f.email%></td>
+           <td><%=f.number%></td>
+           <td><%=f.interest%></td>
+           <td><%=f.background%></td>
+           <td><%=f.fathername%></td>
+           <td><%=f.fathercontact%></td>
+           <td><%=f.mothername%></td>
+           <td><%=f.mothercontact%></td>
+          
+        </tr>
+        <%end%>
+    </tbody>
+</table>
+</div>
+
+ <script type="text/javascript">
+  $(document).ready(function(){
+         jQuery('#datetimepicker').datetimepicker({
+           minDate:'0'
+         });
+    $('#myTable2').DataTable();
+$('#datetimepicker').attr('autocomplete','off');
+         });
+        </script>
+
+        

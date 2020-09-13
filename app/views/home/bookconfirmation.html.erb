@@ -42,8 +42,73 @@
 	</tr>
 </tbody>
 			</table>
-			<div class="btncenter"><button class="btn btn-info" style="margin-top: 20px">Checkout and Pay Now</button>
+			<div class="btncenter"><button class="btn btn-info" id="checkoutpay" style="margin-top: 20px">Checkout and Pay Now</button>
 		</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript"><!--
+$('#checkoutpay').click(function(e){
+e.preventDefault();
+$('#checkoutpay').prop('disabled',true);
+$.ajax({
+   url: backpath+'/api/v1/payment/calchash',
+          type: 'post',
+          data: JSON.stringify({ 
+          	id: '<%=session[:user_id]%>',
+            key: 'lV2jKWB5',
+      salt: 'BGdKpnyPLe',
+      amount: '<%=@c.price%>',
+        pinfo: '<%=@c.typeplan%>',
+            fname: '<%=session[:username]%>',
+      email: '<%=User.find(session[:user_id]).email%>',
+      mobile: '<%=User.find(session[:user_id]).number%>'
+          }),
+      contentType: "application/json",
+          dataType: 'json',
+          success: function(json) {
+            if (json['error']) {
+       $('#alertinfo').html('<i class="fa fa-info-circle"></i>'+json['error']);
+            }
+      else if (json.success) { 
+  
+        launchBOLT(json.hash,json.txnid);
+            }
+          }
+});
+});
+
+
+function launchBOLT(hash,txnid)
+{
+  bolt.launch({
+  key: 'lV2jKWB5',
+  txnid: txnid, 
+  hash: hash,
+  amount: '<%=@c.price%>',
+  firstname: '<%=session[:username]%>',
+  email: '<%=User.find(session[:user_id]).email%>',
+  phone: '<%=User.find(session[:user_id]).number%>',
+  productinfo: '<%=@c.typeplan%>',
+  surl : backpath+"/api/v1/payment/confirmed1?txnid="+txnid+"&pid=<%=params[:plan]%>",
+  furl: backpath+"/api/v1/payment/failed1",
+   mode:'dropout'
+},{ responseHandler: function(BOLT){  
+  if(BOLT.response.txnStatus == 'SUCCESS')
+  {
+
+  }
+  else if (BOLT.response.txnStatus== 'FAILED'){
+
+  }
+  else{
+$('#checkoutpay').prop('disabled',false);
+  }
+},
+  catchException: function(BOLT){
+    alert( BOLT.message );
+  }
+});
+}
+//--
+</script>

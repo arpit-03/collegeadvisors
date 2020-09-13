@@ -1,0 +1,14 @@
+<div class="space-header"></div>
+<div style="padding: 50px">
+
+ <div class="space-header"></div>
+ <%=form_tag deleteslot_path ,method: 'post' do %>
+ <div class="form-group">
+                <div class='input-group date'>
+               <%=number_field_tag :id,"",class:'form-control', placeholder: "Enter slot id to Delete"%>
+                    
+                </div>
+            </div>
+  <%=submit_tag "Delete Slot", class: 'btn btn-info'%>
+<%end%>
+</div>

@@ -42,4 +42,7 @@ redirect_to updateuser_path
     session.delete(:username)
     redirect_to root_path
   end
+  def showslots
+   @adminslots= Adminslot.where(user_id: session[:user_id]).order('slot desc')
+  end
 end

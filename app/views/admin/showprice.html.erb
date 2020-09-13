@@ -1,0 +1,77 @@
+<div class="space-header"></div>
+<div style="padding: 50px">
+<section class="pricing py-5">
+  <h5 style="text-align: center;font-size: 35px">Consultation Pricing</h5><br>
+  <div class="container">
+    <div class="row">
+      <!-- Free Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+
+<%= form_for @c1,url: updatec1_path ,method: 'post' do |f| %>
+            
+            <h5 class="card-title text-muted text-uppercase text-center"> <%= f.text_field :typeplan %></h5>
+            <h6 class="card-price text-center"> <%= f.text_field :price , class:"pricewidth"%><span class="period">for  <%= f.text_field :numsession , class:"sessionwidth",id:"sessionfield"%> session</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line1 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line2 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line3 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line4 %></li>
+            
+            </ul>
+         
+             <%= f.submit class:"btn btn-block btn-primary text-uppercase" %>
+          <%end%>
+          </div>
+        </div>
+      </div>
+      <!-- Plus Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+           <%= form_for @c2,url: updatec2_path ,method: 'post' do |f| %>
+            
+            <h5 class="card-title text-muted text-uppercase text-center"> <%= f.text_field :typeplan %></h5>
+            <h6 class="card-price text-center"> <%= f.text_field :price , class:"pricewidth"%><span class="period">for  <%= f.text_field :numsession , class:"sessionwidth"%> session</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line1 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line2 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line3 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line4 %></li>
+            
+            </ul>
+         
+             <%= f.submit class:"btn btn-block btn-primary text-uppercase" %>
+          <%end%>
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+          <%= form_for @c3,url: updatec3_path ,method: 'post' do |f| %>
+            
+            <h5 class="card-title text-muted text-uppercase text-center"> <%= f.text_field :typeplan %></h5>
+            <h6 class="card-price text-center"> <%= f.text_field :price , class:"pricewidth"%><span class="period">for  <%= f.text_field :numsession , class:"sessionwidth"%> session</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line1 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line2 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line3 %></li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span> <%= f.text_field :line4 %></li>
+            
+            </ul>
+         
+             <%= f.submit class:"btn btn-block btn-primary text-uppercase" %>
+          <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

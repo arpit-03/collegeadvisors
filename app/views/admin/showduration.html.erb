@@ -1,0 +1,11 @@
+<div class="space-header"></div>
+<div style="padding: 50px">
+<%= form_for @c4,url: changedefaults_path ,method: 'post' do |f| %>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Session Time Duration</label>
+<%=f.text_field :typeplan,class:'form-control',type:"text"%><br>
+  </div>
+
+  <%=f.submit "Change Defaults", class: 'btn btn-info'%>
+<%end%>

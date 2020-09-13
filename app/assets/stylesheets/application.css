@@ -148,6 +148,7 @@ body {
 }
 .list-p-item p{
     margin:0;
+    font-size: 12px;
 }
 
 .space-header{
@@ -257,6 +258,12 @@ section.pricing {
 
 /* Hover Effects on Card */
 
+  .choosing_list1 h5{
+    font-size: 12px;
+  }
+  .choosing_list1 {
+    padding: 5px;
+  }
 @media (min-width: 992px) {
   .pricing .card:hover {
     margin-top: -.25rem;
@@ -272,4 +279,53 @@ section.pricing {
 }
 .sessionwidth{
  width: 10% !important; 
+}
+
+.leftcc{
+  margin-left: 4%;
+}
+@media(max-width: 700px){
+  .choosing_list1 h5{
+    font-size: 10px;
+  }
+  .alphasort p{
+    font-size: 10px;
+  }
+  .space-header{
+    height: 8vh;
+  }
+  .leftcc{
+    margin-left: 0;
+  }
+  .search-list-item{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .banner{
+
+    height: 8vh;
+  }
+  .search-list-item img{
+    height: 50px !important;
+    width: 50px !important;
+  }
+  .name-search{
+    font-size: 10px !important;
+  }
+  .fact-search{
+    font-size: 8px;
+  }
+  .location-search{
+    font-size: 8px;
+  }
+
+.course-list a{
+  padding: 5px 5px !important;
+}
+
+
+
+}
+.college-icon img{
+  object-fit: cover;
 }

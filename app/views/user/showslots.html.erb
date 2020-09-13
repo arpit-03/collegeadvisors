@@ -1,0 +1,22 @@
+<div class="space-header"></div>
+<div style="background-color: #f1f9ff;min-height: 80vh;">
+	<%if @adminslots.length==0%>
+	<div style="display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;">No Slots Have Been Booked</div>
+	<%end%>
+	<%@adminslots.each do |f|%>
+	<div style="padding: 25px;
+    margin: 25px;
+    background-color: white;">
+		<p>Slot Id: <strong><%=f.id%></strong></p>
+		<div style="    display: flex;
+    justify-content: space-between;">
+		<p>Slot Time: <strong><%=f.slot.strftime("%H:%M")%></strong></p>
+		<p>Slot Day: <strong><%=f.slot.strftime("%A")%></strong></p>
+		<p>Slot Date: <strong><%=f.slot.strftime("%d/%m/%Y")%></strong></p>
+	</div>
+	</div>
+	<%end%>
+</div>

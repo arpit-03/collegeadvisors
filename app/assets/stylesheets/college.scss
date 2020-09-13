@@ -135,7 +135,7 @@ background-color:white;
     font-size: 17px;
     }
 }
-.choosing_list1{
+.choosing_list2{
       padding: 10px;
     padding-left: 10px;
     /* padding: 40px; */
@@ -175,7 +175,79 @@ table{
 }
 
 
+.mainlistcc{
+    width:80%;
+}
 
+ .sidelistcc{
+    width:20%;
+    }
+@media(max-width: 700px){
+    .choosing_list2{
+    width:100% !important;
+    h5{
+    font-size: 10px;
+    }
+    }
+    .list-p-item{
+    p{
+    font-size: 8px !important;
+    }
+    }
 
+    .sidelistcc{
+    width:25% !important;
+    }
 
+.mainlistcc{
+    width:75% !important;
+    padding-top:20px !important;
+    padding-right:15px !important;
+}
 
+.college-contain{
+    padding:0;
+}
+.college-icon{
+    top: -50px;
+    left: 140px !important;
+    width:100px;
+    img{
+    height:100px !important;
+    width:100px !important;
+    }
+}
+.banner-bottom{
+    flex-direction:column;
+}
+
+.infocollege{
+    flex-direction: column;
+    .tablecover{
+    width:100%;
+    }
+    .facility_top{
+    width:100%;
+    margin-left:0px !important;
+    margin-top:20px;
+    }
+}
+.college-item{
+    width:100% !important;
+h5{
+    font-size:12px !important;
+}
+}
+.scrollist{
+    height:30vh !important;
+}
+.title {
+    font-size:16px !important;
+}
+table{
+    font-size: 10px;
+}
+.activity_icon img{
+    width:35px !important;
+}
+}

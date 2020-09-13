@@ -17,11 +17,20 @@ Aenean scelerisque, nibh ac pretium rutrum, velit nisi faucibus magna, sed conse
 	<div class="datehead"><p><%=f[0].strftime("%A")%> <%=f[0].strftime("%d-%m-%Y")%></p></div>
 	<%timenow=f[0].strftime("%Y-%m-%d %H:%M:%S ") %>
 	<%timenow=timenow[0..timenow.length-4]+"UTC"%>
-	<%@fullslots=Adminslot.where('DATE(slot)=?',timenow)%>
+	<%@fullslots=Adminslot.where('DATE(slot)=?',timenow).order('slot')%>
 	<%@fullslots.each do |fs|%>
-	<div class="btn btn-primary slotbookbtn" id="slot-<%=fs.id%>" data-toggle="modal" data-target="#exampleModal">
+	<%if fs.booked==true%>
+	<div class="disabledbtn">
 	<%=fs.slot.strftime("%H:%M")%>
+		</div>
+		<%else%>
+		
+			<div class="btn btn-primary slotbookbtn" id="slot-<%=fs.id%>" data-toggle="modal" data-target="#exampleModal">
+			<%=fs.slot.strftime("%H:%M")%>
 </div>
+		
+		<%end%>
+
 	<%end%>
 	
 	<%end%>
@@ -47,7 +56,7 @@ Aenean scelerisque, nibh ac pretium rutrum, velit nisi faucibus magna, sed conse
               <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c1.line4%></li>
           
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
+            <a id="buy1" href="/home/bookconfirmation/1" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
           </div>
         </div>
       </div>
@@ -65,7 +74,7 @@ Aenean scelerisque, nibh ac pretium rutrum, velit nisi faucibus magna, sed conse
               <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c2.line4%></li>
           
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
+            <a href="/home/bookconfirmation/2" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
           </div>
         </div>
       </div>
@@ -83,7 +92,7 @@ Aenean scelerisque, nibh ac pretium rutrum, velit nisi faucibus magna, sed conse
               <li><span class="fa-li"><i class="fas fa-check"></i></span><%=@c3.line4%></li>
           
             </ul>
-            <a href="#" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
+            <a href="/home/bookconfirmation/3" class="btn btn-block btn-primary text-uppercase">Buy Now</a>
           </div>
         </div>
       </div>
@@ -110,15 +119,30 @@ Aenean scelerisque, nibh ac pretium rutrum, velit nisi faucibus magna, sed conse
     </div>
   </div>
 </div>
+<footer class="footer-area section-gap">
+<div class="container">
+<div class="footer-bottom row align-items-center">
+<p class="footer-text m-0 col-lg-8 col-md-12">
+Copyright© 2020 All rights reserved | CollegeAdvisors <i class="fa fa-heart-o" aria-hidden="true"></i> 
+</p>
+<div class="col-lg-4 col-md-12 footer-social">
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-dribbble"></i></a>
+<a href="#"><i class="fab fa-behance"></i></a>
+</div>
+</div>
+</div>
+</footer>
 <script type="text/javascript">
 	$('.slotbookbtn').click(function(event){
-var id= $(this)[0].id;
+var id= $(this)[0].id.replace("slot-","");
 		$('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus');
 });
 $('#yesmodal').click(function(e){
-	console.log(id);
+	window.location=backpath+"/home/slotbooked/"+id;
 });
 	});
 
-</script>>
+</script>

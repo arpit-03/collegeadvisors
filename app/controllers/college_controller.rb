@@ -7,7 +7,7 @@ class CollegeController < ApplicationController
   	@facts = a.facts
   	@facts_table = JSON.parse(a.facts_table)
   	@facility = JSON.parse(a.facility)
-
+    
 @current_college_id=params[:id]
 
 
