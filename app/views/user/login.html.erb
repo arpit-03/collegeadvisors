@@ -127,7 +127,8 @@ Create your Account. Sign up now
             'username': name,
             'password': password
         },
-        'success' : function(data) {    
+        'success' : function(data) {  
+        console.log(data);  
         if(data.msg=="success")          
             window.location="/user/createsession/"+data.user_id+"/"+data.username;
         else
