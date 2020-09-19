@@ -32,7 +32,7 @@ config.action_mailer.smtp_settings = {
   address:              'smtp.sendgrid.net',
   port:                 587,
   user_name:            'apikey',
-  password:             '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',
+  password:             '',
   authentication:       'plain',
   enable_starttls_auto: true }
   # Store uploaded files on the local file system (see config/storage.yml for options).
