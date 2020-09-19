@@ -5,7 +5,7 @@
 		<div class="choosing_list1" >
 		<h5>Select</h5>
 		<div class="scrollist">
-			<form id="search-list-form">
+			<form id="search-list-form1">
 	<h5>By Degree</h5>
 	<input class="" type="radio" name="gridRadios1" value="all" >
             <div class="list-p-item"><p>All</p><p><%=@count%></p></div>
@@ -97,7 +97,8 @@ Copyright© 2020 All rights reserved | CollegeAdvisors <i class="fa fa-heart-o" 
 </footer>
 
 <script type="text/javascript">
-	
+	$(document).on('turbolinks:load', function() {
+		console.log("a");
 var url_string = window.location.href; //window.location.href
 var url = new URL(url_string);
 console.log(url)
@@ -105,7 +106,7 @@ var d = url.searchParams.get("degree");
 var c = url.searchParams.get("order");
 		$("input[name=gridRadios1][value='"+d+"']").prop("checked",true);
 $("input[name=gridRadios2][value='"+c+"']").prop("checked",true);
-		$('#search-list-form').submit(function(event){
+		$('#search-list-form1').submit(function(event){
 			event.preventDefault();
 			var a1= $("input[name='gridRadios1']:checked").val();
 var b= $("input[name='gridRadios2']:checked").val();
@@ -115,5 +116,5 @@ if(b===undefined)
 b="normal";
 			window.location=backpath+"/search/<%=@current_stream%>/1/?degree="+a1+"&order="+b;
 		});
-
+});
 </script>

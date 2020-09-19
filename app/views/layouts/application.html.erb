@@ -73,18 +73,18 @@ color="<color-code>" bolt-logo="<image path>"></script>
 <li><a href="/#features">Features</a></li>
 <li class="menu-has-children"><a  class="sf-with-ul">Categories <i class="fas fa-caret-down"></i></a>
 <ul style="display: none;">
-<li><a href="/search/engineering/1">Engineering</a></li>
-<li><a href="/search/medical/1">Medical</a></li>
-<li><a href="/search/commerce/1">Commerce</a></li>
-<li><a href="/search/science/1">Science</a></li>
-<li><a href="/search/arts/1">Arts</a></li>
-<li><a href="/search/hospitality/1">Hospitality</a></li>
-<li><a href="/search/animation/1">Animation</a></li>
-<li><a href="/search/mascom/1">Mass Communication</a></li>
-<li><a href="/search/humanities/1">Humanities</a></li>
-<li><a href="/search/architecture/1">Architecture</a></li>
-<li><a href="/search/law/1">Law</a></li>
-<li><a href="/search/design/1">Design</a></li>
+<li><a class="engc">Engineering</a></li>
+<li><a class="medicalc">Medical</a></li>
+<li><a class="comc">Commerce</a></li>
+<li><a class="sciencec">Science</a></li>
+<li><a class="artsc">Arts</a></li>
+<li><a class="hospc">Hospitality</a></li>
+<li><a class="animac">Animation</a></li>
+<li><a class="massc">Mass Communication</a></li>
+<li><a class="humanc">Humanities</a></li>
+<li><a class="arcc">Architecture</a></li>
+<li><a class="lawc">Law</a></li>
+<li><a class="designc">Design</a></li>
 </ul>
 </li>
 <li class=""><a href="/#testimonials">Testimonials</a></li>
@@ -131,21 +131,58 @@ color="<color-code>" bolt-logo="<image path>"></script>
 <li><a href="/#features">Features</a></li>
 <li class="menu-has-children"><a  class="sf-with-ul">Categories</a>
 <ul style="display: none;">
-<li><a href="/search/engineering/1">Engineering</a></li>
-<li><a href="/search/medical/1">Medical</a></li>
-<li><a href="/search/commerce/1">Commerce</a></li>
-<li><a href="/search/science/1">Science</a></li>
-<li><a href="/search/arts/1">Arts</a></li>
-<li><a href="/search/hospitality/1">Hospitality</a></li>
-<li><a href="/search/animation/1">Animation</a></li>
-<li><a href="/search/mascom/1">Mass Communication</a></li>
-<li><a href="/search/humanities/1">Humanities</a></li>
-<li><a href="/search/architecture/1">Architecture</a></li>
-<li><a href="/search/law/1">Law</a></li>
-<li><a href="/search/design/1">Design</a></li>
+<li><a class="engc">Engineering</a></li>
+<li><a class="medicalc">Medical</a></li>
+<li><a class="comc">Commerce</a></li>
+<li><a class="sciencec">Science</a></li>
+<li><a class="artsc">Arts</a></li>
+<li><a class="hospc">Hospitality</a></li>
+<li><a class="animac">Animation</a></li>
+<li><a class="massc">Mass Communication</a></li>
+<li><a class="humanc">Humanities</a></li>
+<li><a class="arcc">Architecture</a></li>
+<li><a class="lawc">Law</a></li>
+<li><a class="designc">Design</a></li>
 </ul>
 </li>
-
+<script type="text/javascript">
+  $('.engc').click(function(){
+    window.location=backpath+"/search/engineering/1" 
+  });
+   $('.medicalc').click(function(){
+    window.location=backpath+"/search/medical/1" 
+  });
+    $('.comc').click(function(){
+    window.location=backpath+"/search/commerce/1" 
+  });
+     $('.sciencec').click(function(){
+    window.location=backpath+"/search/science/1" 
+  });
+      $('.artsc').click(function(){
+    window.location=backpath+"/search/arts/1" 
+  });
+       $('.hospc').click(function(){
+    window.location=backpath+"/search/hospitality/1" 
+  });
+        $('.animac').click(function(){
+    window.location=backpath+"/search/animation/1" 
+  });
+         $('.massc').click(function(){
+    window.location=backpath+"/search/mascom/1" 
+  });
+          $('.humanc').click(function(){
+    window.location=backpath+"/search/humanities/1" 
+  });
+           $('.arcc').click(function(){
+    window.location=backpath+"/search/architecture/1" 
+  });
+            $('.lawc').click(function(){
+    window.location=backpath+"/search/law/1" 
+  });
+             $('.design').click(function(){
+    window.location=backpath+"/search/design/1" 
+  });
+</script>>
 <li><a href="/#testimonials">Testimonials</a></li>
 <li ><a href="/home/bookslot">Consultation</a></li>
 </ul>
@@ -227,5 +264,6 @@ $('#mc_embed_signup').find('form').ajaxChimp();});
 window.location=backpath;
   });
 </script>
+
   </body>
 </html>
