@@ -6,9 +6,13 @@ module Api
        	 
        	 if (User.find_by(email: params[:username]))
   	if(User.find_by(email: params[:username]).password==params[:password])
-  		session[:user_id]= User.find_by(email: params[:username]).id
+  		if(User.find_by(email: params[:username]).verified==true)
+      session[:user_id]= User.find_by(email: params[:username]).id
   		  		session[:username]= User.find_by(email: params[:username]).name
       return render json:{ msg: "success"}
+    else
+render json:{ msg: "User not verified"}
+    end
        end
    end
        return render json:{ msg: "error"}
@@ -28,8 +32,19 @@ module Api
        	 UserMailer.with(user: @user).confirmation_email.deliver_later
        	
 return render json:{ msg: "success"}
+elsif (User.find_by(email: params[:email]) && User.find_by(email: params[:email]).verified==false)
+    u=  User.create(name: params[:name], email: params[:email], password: params[:password], interest: params[:college], number: params[:phone], gender: params[:gender], background: params[:background] , fathername: params[:fathername], fathercontact: params[:fatherno], mothername: params[:mothername], mothercontact: params[:motherno],verified: false, verification_token: token)
+        @user={
+          id: u.id,
+          name: params[:name],
+          email: params[:email],
+          token: token
+        }
+         UserMailer.with(user: @user).confirmation_email.deliver_later
+        
+return render json:{ msg: "success"}
 else
-  return render json:{ msg: "User aready exists"}
+  return render json:{ msg: "Error occured"}
   end
        end
 def confirmforgot
@@ -59,6 +74,9 @@ return render json:{ msg: "success"}
 else
 return render json:{ msg: "User do no exists"}
 end
+end
+
+def resend
 end
         end
     end
