@@ -8,7 +8,10 @@ module Api
   	if(User.find_by(email: params[:username]).password==params[:password])
   	
     	if(User.find_by(email: params[:username]).verified==true)
-     createsession_path(User.find_by(email: params[:username]).id,User.find_by(email: params[:username]).name)
+     
+      session[:user_id]= User.find_by(email: params[:username]).id
+  		  		session[:username]= User.find_by(email: params[:username]).name
+  
       return render json:{ msg: "success"}
     else
 return render json:{ msg: "User not verified"}
