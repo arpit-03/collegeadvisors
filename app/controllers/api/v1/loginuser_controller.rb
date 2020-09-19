@@ -11,7 +11,7 @@ module Api
   		  		session[:username]= User.find_by(email: params[:username]).name
       return render json:{ msg: "success"}
     else
-render json:{ msg: "User not verified"}
+return render json:{ msg: "User not verified"}
     end
        end
    end
