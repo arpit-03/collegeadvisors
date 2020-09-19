@@ -49,6 +49,7 @@ end
   get 'payment/confirmed',as:'confirmed'
   get 'payment/failed', as: 'failed'
   get 'home/about'
+  get 'home/errorvar', to: 'home#errorvar', as: 'errorvar'
   get 'user/createsession/:user_id/:username', to: 'user#createsession', as:'createsession'
   post 'admin/changelink2', to: 'admin#changelink2', as: 'changelink'
   post 'admin/deleteslot2', to: 'admin#deleteslot2', as: 'deleteslot'

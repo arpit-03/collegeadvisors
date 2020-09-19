@@ -9,6 +9,8 @@ class HomeController < ApplicationController
 
 def about
 end
+def errorvar
+  end
     def show
 
     	@current_stream=params[:stream]

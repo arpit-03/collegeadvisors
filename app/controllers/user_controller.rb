@@ -30,8 +30,9 @@ redirect_to root_path
       User.find(id).update(verified: true)
     session[:user_id]=id
     session[:username]= User.find(id).name
-    end
     redirect_to root_path
+    end
+    redirect_to errorvar_path
   end
   def updatechangesinuser
     if params[:password]==""
