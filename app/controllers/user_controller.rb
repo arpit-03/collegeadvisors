@@ -26,8 +26,8 @@ redirect_to root_path
   def verify
     id=params[:email]
     token = params[:token]
-    if(User.find(id).verification_token==token)
-      User.find(id).update(verified: true)
+    if(User.find_by(email: id).verification_token==token)
+      User.find(email: id).update(verified: true)
     session[:user_id]=id
     session[:username]= User.find(id).name
     end
