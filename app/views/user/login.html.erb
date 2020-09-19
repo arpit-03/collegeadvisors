@@ -129,7 +129,7 @@ Create your Account. Sign up now
         },
         'success' : function(data) {    
         if(data.msg=="success")          
-            window.location=backpath;
+            window.location="/user/createsession/"+data.user_id+"/"+data.username;
         else
             window.location=backpath+"/user/login";
         },

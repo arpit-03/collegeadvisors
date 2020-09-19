@@ -8,9 +8,10 @@ class UserController < ApplicationController
   def signupsave
 
   end
-  def createsession(a,b)
-session[:user_id]=a
-session[:username]=b
+  def createsession
+session[:user_id]=params[:user_id]
+session[:username]=params[:username]
+redirect_to root_path
   end
   def forgotpassword
     @id= params[:id]
