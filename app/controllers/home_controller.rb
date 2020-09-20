@@ -152,12 +152,12 @@ else
 end
 end
 def slotsuccess
-  puts session[:user_id]
+
 if(Adminslot.find(params[:id]).user_id.to_s == session[:user_id])
 @slotinfo=Adminslot.find(params[:id])
-byebug
+
 else
-  byebug
+  
   redirect_to error_path
 end
 
