@@ -37,7 +37,7 @@ redirect_to root_path
   
   end
   def updatechangesinuser
-    if params[:password].length==0
+    if params[:password].to_s.length==0
     User.find_by(email: params[:user][:email]).update(name: params[:user][:name],background: params[:user][:background],interest: params[:user][:interest], number: params[:user][:number], mothername: params[:user][:mothername],mothercontact: params[:user][:mothercontact],fathername: params[:user][:fathername],fathercontact: params[:user][:fathercontact])
     else
  User.find_by(email: params[:user][:email]).update(name: params[:user][:name],password: params[:user][:password],interest: params[:user][:interest],background: params[:user][:background], number: params[:user][:number], mothername: params[:user][:mothername],mothercontact: params[:user][:mothercontact],fathername: params[:user][:fathername],fathercontact: params[:user][:fathercontact])
