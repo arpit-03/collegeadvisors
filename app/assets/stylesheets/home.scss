@@ -154,4 +154,16 @@ color: #1e314a;
     height: 45vh !important;
     margin-bottom:10px !important;
 }  
+.bconfcover{
+    padding: 20px !important;
+    .bconfdiv{
+    flex-direction:column;
+    .plan{
+    width:100%;
+    }
+    .tablediv{
+    width:100%;
+    }
+    }
+}
 }
