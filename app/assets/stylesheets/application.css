@@ -329,3 +329,7 @@ section.pricing {
 .college-icon img{
   object-fit: cover;
 }
+
+a{
+  cursor: pointer !important;
+}

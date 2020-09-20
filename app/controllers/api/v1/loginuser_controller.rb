@@ -15,10 +15,12 @@ module Api
 return render json:{ msg: "User not verified"}
     end
 
+      else
+    return render json:{ msg: "Wrong username or password"}    
        end
    
 else
-       return render json:{ msg: "error"}
+       return render json:{ msg: "Wrong username or password"}
 end
        end
 
