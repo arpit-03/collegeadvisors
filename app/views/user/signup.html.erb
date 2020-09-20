@@ -47,7 +47,7 @@
                                             <input type="email" class="form-control" placeholder="Your Email *" name="email" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" class="form-control" placeholder="Your Phone *" name="phone" />
+                                            <input type="number" minlength="10" maxlength="10" class="form-control" placeholder="Your Phone *" name="phone" />
                                         </div>
                                         <div class="form-group">
                                             <select class="form-control" id="background">
@@ -130,14 +130,15 @@ new Noty({
       timeout: 1000
 }).show();
         }
-        else if (phone===""){
+        else if (phone==="" || phone.length<10 || phone.length>10){
          new Noty({
     type: 'error',
     layout: 'topRight',
-    text: 'Please enter Mobile Number',
+    text: 'Please enter a valid Mobile Number',
       timeout: 1000
 }).show();   
         }
+
         else{
          $.ajax({
         
