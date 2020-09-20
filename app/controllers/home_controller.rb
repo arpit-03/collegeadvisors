@@ -152,6 +152,7 @@ else
 end
 end
 def slotsuccess
+  puts session[:user_id]
 if(Adminslot.find(params[:id]) && Adminslot.find(params[:id]).user_id==session[:user_id])
 @slotinfo=Adminslot.find(params[:id])
 else
