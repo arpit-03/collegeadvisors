@@ -37,7 +37,7 @@ end
        	
 return render json:{ msg: "success"}
 elsif (User.find_by(email: params[:email]) && User.find_by(email: params[:email]).verified==false)
-    u=  User.update(name: params[:name], password: params[:password], interest: params[:college], number: params[:phone], gender: params[:gender], background: params[:background] , fathername: params[:fathername], fathercontact: params[:fatherno], mothername: params[:mothername], mothercontact: params[:motherno],verified: false, verification_token: token)
+    u=  User.find_by(email:params[:email]).update(name: params[:name], password: params[:password], interest: params[:college], number: params[:phone], gender: params[:gender], background: params[:background] , fathername: params[:fathername], fathercontact: params[:fatherno], mothername: params[:mothername], mothercontact: params[:motherno],verified: false, verification_token: token)
         @user={
           id: u.id,
           name: params[:name],
