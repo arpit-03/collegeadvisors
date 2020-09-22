@@ -51,6 +51,8 @@ end
   get 'home/about'
   get 'home/errorvar', to: 'home#errorvar', as: 'errorvar'
   get 'user/createsession/:user_id/:username', to: 'user#createsession', as:'createsession'
+  get '/home/tnc'
+  get '/home/privacy'
   post 'admin/changelink2', to: 'admin#changelink2', as: 'changelink'
   post 'admin/deleteslot2', to: 'admin#deleteslot2', as: 'deleteslot'
   post 'admin/unbookslot2', to: 'admin#unbookslot2',as:'unbookslot'

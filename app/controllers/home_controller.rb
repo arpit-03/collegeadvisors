@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authorize_user , except:[:index,:show,:search,:about]
+  before_action :authorize_user , except:[:index,:show,:search,:about,:tnc,:privacy]
   def index
    
     @c1=Defaultparam.find(1)
@@ -10,6 +10,10 @@ class HomeController < ApplicationController
 def about
 end
 def errorvar
+  end
+  def tnc
+  end
+  def privacy
   end
     def show
 
